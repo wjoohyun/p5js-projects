@@ -1,8 +1,8 @@
 let faceX = 0;      
 let isSmile = true; 
 
-let leftArmAngle = 0;   // 왼팔 각도
-let rightArmAngle = 0;  // 오른팔 각도
+let leftArmAngle = 0;
+let rightArmAngle = 0;
 
 function setup() {
   createCanvas(600, 400);
@@ -10,6 +10,20 @@ function setup() {
 
 function draw() {
   background(255);
+
+  // 시간 기반 모션 (10초 주기)
+  let t = millis() / 1000;       // 초 단위
+  let cycle = t % 10;            // 10초 반복
+
+  // 1) 좌우 이동 (부드럽게)
+  faceX = sin(t * 1) * 40;       // 좌우 -40 ~ +40
+
+  // 2) 팔 흔들기 (부드러운 모션)
+  leftArmAngle = sin(t * 2) * 30;
+  rightArmAngle = cos(t * 2) * 30;
+
+  // 3) 표정 자동 변화 (5초마다 변경)
+  isSmile = cycle < 5;
 
   push();
   translate(faceX, 0);
@@ -34,15 +48,15 @@ function draw() {
 
   // 왼팔 회전
   push();
-  translate(250, 280);   // 회전 중심
+  translate(250, 280);
   rotate(radians(leftArmAngle));
   fill(255, 220, 180);
-  ellipse(0, 15, 15, 45); // 팔 모양
+  ellipse(0, 15, 15, 45);
   pop();
 
   // 오른팔 회전
   push();
-  translate(350, 280);   // 회전 중심
+  translate(350, 280);
   rotate(radians(-rightArmAngle));
   fill(255, 220, 180);
   ellipse(0, 15, 15, 45); 
@@ -113,7 +127,7 @@ function draw() {
   strokeWeight(2);
   line(300, 175, 300, 190);
 
-  // 입 (표정)
+  // 입 (자동 표정)
   stroke(150, 0, 0);
   strokeWeight(2.5);
   noFill();
@@ -137,39 +151,4 @@ function draw() {
   }
 
   pop();
-}
-
-//
-// 🎹 키보드 인터랙션
-//
-function keyPressed() {
-  if (keyCode === LEFT_ARROW) faceX -= 10;
-  if (keyCode === RIGHT_ARROW) faceX += 10;
-
-  // A 키 → 왼팔 올리기
-  if (key === 'a' || key === 'A') {
-    leftArmAngle = -40; // 위로 올리기
-  }
-
-  // D 키 → 오른팔 올리기
-  if (key === 'd' || key === 'D') {
-    rightArmAngle = -40;
-  }
-}
-
-function keyReleased() {
-  // 키 떼면 원래대로
-  if (key === 'a' || key === 'A') {
-    leftArmAngle = 0;
-  }
-  if (key === 'd' || key === 'D') {
-    rightArmAngle = 0;
-  }
-}
-
-//
-// 🖱 마우스 인터랙션
-//
-function mousePressed() {
-  isSmile = !isSmile;
 }
