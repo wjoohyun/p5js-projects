@@ -2,60 +2,47 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>P5.js Assignment Portfolio</title>
-
+  <title>My P5.js Projects</title>
   <style>
     body {
-      background: #f4f4f4;
       font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
+      background: #f4f4f4;
       text-align: center;
+      padding: 50px;
     }
-
-    header {
-      background: #222;
-      color: white;
-      padding: 30px 0;
-      font-size: 28px;
-      font-weight: bold;
+    h1 { margin-bottom: 40px; }
+    .projects {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
     }
-
-    .container {
-      margin-top: 40px;
-    }
-
-    a.assignment-link {
-      display: block;
+    .card {
+      width: 200px;
+      padding: 20px;
       background: white;
-      width: 260px;
-      margin: 15px auto;
-      padding: 15px;
-      border-radius: 8px;
-      font-size: 20px;
-      color: #333;
-      text-decoration: none;
-      font-weight: bold;
-      border: 2px solid #ddd;
-      transition: 0.2s;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
-
-    a.assignment-link:hover {
-      background: #ffe89a;
-      border-color: #f0c000;
+    .card a {
+      text-decoration: none;
+      color: #333;
+    }
+    .card:hover {
+      background: #e8f0ff;
     }
   </style>
 </head>
 
 <body>
-  <header>P5.js Assignments</header>
+  <h1>P5.js Assignments</h1>
 
-  <div class="container">
-    <a class="assignment-link" href="assignment1/index.html">Assignment 1</a>
-    <a class="assignment-link" href="assignment2/index.html">Assignment 2</a>
-    <a class="assignment-link" href="assignment3/index.html">Assignment 3</a>
-    <a class="assignment-link" href="assignment4/index.html">Assignment 4</a>
+  <div class="projects">
+    <div class="card"><a href="assignment1/">Assignment 1</a></div>
+    <div class="card"><a href="assignment4/">Assignment 4</a></div>
+    <div class="card"><a href="assignment2/">Assignment 2</a></div>
+    <div class="card"><a href="assignment3/">Assignment 3</a></div>
   </div>
+
 </body>
 </html>
