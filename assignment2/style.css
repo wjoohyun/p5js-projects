@@ -2,6 +2,15 @@ html, body {
   margin: 0;
   padding: 0;
 }
+
+/* 캔버스가 가운데 꽉 차게 보이도록 (선택 옵션) */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+}
+
 canvas {
-  display: block;
+  display: block;   /* 캔버스 위·아래 여백 제거 */
 }
